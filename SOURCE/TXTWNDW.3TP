@@ -1,0 +1,119 @@
+{$C-}
+Program Windows ;
+Type
+   WindRec = RECORD
+               WindTop,
+               WindBottom,
+               WindLeft,
+               WindRight : Integer
+             End ;
+
+Var
+   Done : Boolean ;
+   Wind1, Wind2 : WindRec ;
+   TextFile : Text ;
+
+Procedure OpenWind(Wind : WindRec ) ;
+
+Begin
+   With Wind DO
+   Begin
+      Window(WindLeft, WindTop, WindRight, WindBottom ) ;
+      GotoXY(1, 1 + WindBottom - WindTop ) ;
+      Writeln ;
+   End ;
+End ;  { OpenWind }
+
+
+Function OpenFile : Boolean ;
+ { True if File open; False if user Quits }
+
+Var
+   ErrCode : Integer ;
+   FileName : String[14] ;
+
+Begin
+   OpenWind(Wind1) ;
+   Repeat
+      Writeln('Enter a file name ');
+      Write(']');
+      Buflen := 14 ;
+      Readln(FileName);
+      If Length(FileName) = 0 Then
+      Begin
+         OpenFile := False; Exit
+      End;
+      Assign(TextFile,FileName);
+      {$I-}
+      Reset(TextFile);
+      {$I+}
+      ErrCode := Ioresult;
+      If ErrCode <> 0
+         Then Writeln('Error #',ErrCode,#7#13#10);
+   Until ErrCode = 0 ;
+   OpenFile := True ;
+End ;  { OpenFile }
+
+Procedure DisplayFile;
+Var
+  S : String[132];
+Begin
+   OpenWind(Wind2);
+   Writeln;
+   While NOT Eof(TextFile) DO
+   Begin
+      Readln(TextFile,S);
+      Writeln(S);
+   End;
+   Close(TextFile);
+End; { DisplayFile }
+
+Procedure TextBox(Top,Bottom,Left,Right : Integer );
+Var
+   X, Y : Integer ;
+   Procedure TwoChar( x1,y1,x2,y2:Integer);
+   Begin
+      GoToxy(x1,y1);
+      Write(Chr(176));
+      GoToxy(x2,y2);
+      Write(Chr(176));
+   End;
+
+Begin
+   For x := Left to Right DO
+      TwoChar(x,Top,x,Bottom);
+   For y := Top to Bottom DO
+      TwoChar(Left,y,Right,y);
+End; {TextBox}
+
+Procedure InitWind( Var Wind :WindRec;
+                    Top, Bottom, Left, Right : Integer );
+
+Begin
+   TextBox(Top,Bottom,Left,Right );
+   With Wind DO
+   Begin
+      WindTop    := Top+1;
+      WindBottom := Bottom-1;
+      WindLeft   := Left+1;
+      WindRight  := Right-1;
+   End;
+End; { InitWind }
+
+Procedure Initialize;
+Begin
+   ClrScr;
+   InitWind(Wind1,1,5,1,21);
+   InitWind(Wind2,8,22,1,80);
+End; { Initialize }
+
+Begin
+   Initialize;
+   Repeat
+      Done := Not OpenFile;
+      If Not Done
+         Then DisplayFile
+   Until Done;
+   Window(1,1,80,25);
+   ClrScr;
+End.

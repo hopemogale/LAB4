@@ -1,0 +1,35 @@
+
+ Volume in drive B is  PASCAL2   
+ Directory of B:\
+
+UPGRADE  EXE        43,040 12-16-87   4:00a
+UPGRADE  DTA        25,495 12-16-87   4:00a
+TPMAP    EXE        10,688 12-16-87   4:00a
+TPUMOVER EXE        47,232 12-16-87   4:00a
+TPCONFIG EXE        13,670 12-16-87   4:00a
+BINOBJ   EXE        10,578 12-16-87   4:00a
+MAKE     EXE        19,094 12-16-87   4:00a
+GREP     COM         5,930 12-16-87   4:00a
+TOUCH    COM         3,992 12-16-87   4:00a
+CRTDEMO  PAS         4,294 12-16-87   4:00a
+GR3DEMO  PAS         6,771 12-16-87   4:00a
+QSORT    PAS         1,743 12-16-87   4:00a
+LISTER   PAS         5,735 12-16-87   4:00a
+HILB     PAS         6,227 12-16-87   4:00a
+FIB8087  PAS         1,148 12-16-87   4:00a
+PROCPTR  PAS         1,319 12-16-87   4:00a
+EMS      PAS        15,687 12-16-87   4:00a
+BCD      PAS         4,868 12-16-87   4:00a
+CPASDEMO PAS         4,434 12-16-87   4:00a
+CPASDEMO C           1,681 12-16-87   4:00a
+CTOPAS   TC          1,711 12-16-87   4:00a
+TURBOC   CFG            76 12-16-87   4:00a
+SYSTEM   DOC         1,550 12-16-87   4:00a
+DOS      DOC         3,577 12-16-87   4:00a
+CRT      DOC         2,565 12-16-87   4:00a
+PRINTER  DOC           557 12-16-87   4:00a
+GRAPH3   DOC         2,061 12-16-87   4:00a
+TURBO3   DOC           969 12-16-87   4:00a
+Q&A                 20,535 12-16-87   4:00a
+       29 file(s)        267,227 bytes
+                          78,848 bytes free

@@ -1,0 +1,24 @@
+Type
+   CharBuf = Array[0..127] of Char;
+   TextRec = Record
+      Handle       : Word;
+      Mode         : Word;
+      BufSize      : Word;
+      Private      : Word;
+      BufPos       : Word;
+      BufEnd       : Word;
+      BufPtr       : ^CharBuf;
+      OpenFunc     : Pointer;
+      InOutFunc    : Pointer;
+      FlushFunc    : Pointer;
+      CloseFunc    : Pointer;
+      UserData     : Array[1..16] of Byte;
+      Name         : Array[0..79] Of Char;
+      Buffer       : CharBuf;
+   End;
+
+Const
+   FmClosed = $07B0;
+   FmInput  = $07B1;
+   FmOutput = $07B2;
+   FmInOut  = $07B3;
